@@ -1,0 +1,29 @@
+{
+  "name": "twtxtr",
+  "description": "A minimal twtxt cli",
+  "module": "src/index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "bin": {
+    "twtxtr": "bin/twtxtr"
+  },
+  "scripts": {
+    "build": "bun run scripts/build.js"
+  },
+  "dependencies": {
+    "@types/luxon": "^3.4.2",
+    "cac": "^6.7.14",
+    "commander": "^12.1.0",
+    "cosmiconfig": "^9.0.0",
+    "dayjs": "^1.11.11",
+    "luxon": "^3.4.4",
+    "meow": "^13.2.0",
+    "un-eval": "^1.2.0",
+    "untildify": "^5.0.0"
+  }
+}
