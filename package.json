@@ -1,6 +1,6 @@
 {
   "name": "twtxtr",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "A minimal twtxt cli",
   "module": "src/index.ts",
   "type": "module",
