@@ -1,12 +1,10 @@
-#!/usr/bin/env node
-
 import day from "dayjs";
 import { appendFile } from "node:fs/promises";
 import { homedir } from "node:os";
 import path from "node:path";
 import { loadConfig, resolveHome, configFilePath } from "./utils";
 
-const main = async () => {
+export default async () => {
   const config = loadConfig(configFilePath);
   const twtfile = resolveHome(config.twtxt.twtfile);
   const twtfileDir = path.dirname(twtfile);
@@ -40,5 +38,3 @@ const main = async () => {
     console.error(`failed to commit and push: ${error}`);
   }
 };
-
-main();
