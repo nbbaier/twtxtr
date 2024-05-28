@@ -1,16 +1,13 @@
 #!/usr/bin/env node
 
 import day from "dayjs";
+import { appendFile } from "node:fs/promises";
 import { homedir } from "node:os";
 import path from "node:path";
-import { appendFile } from "node:fs/promises";
-import { loadConfig, resolveHome } from "./utils";
-
-const configDirPath = path.join(homedir(), ".config", "twttr");
-export const configFilePath = path.join(configDirPath, "config.json");
+import { loadConfig, resolveHome, configFilePath } from "./utils";
 
 const main = async () => {
-  const config = loadConfig();
+  const config = loadConfig(configFilePath);
   const twtfile = resolveHome(config.twtxt.twtfile);
   const twtfileDir = path.dirname(twtfile);
 

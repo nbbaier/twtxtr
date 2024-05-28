@@ -1,9 +1,11 @@
 import fs from "node:fs";
 import { homedir } from "node:os";
 import path from "node:path";
-import { configFilePath } from ".";
 
-const loadGlobalConfig = () => {
+const configDirPath = path.join(homedir(), ".config", "twtxtr");
+export const configFilePath = path.join(configDirPath, "config.json");
+
+const loadGlobalConfig = (configFilePath: string) => {
   try {
     return JSON.parse(fs.readFileSync(configFilePath, "utf-8"));
   } catch (error) {
@@ -13,14 +15,14 @@ const loadGlobalConfig = () => {
 const loadLocalConfig = () => {
   try {
     return JSON.parse(
-      fs.readFileSync(path.join(process.cwd(), "twttr.json"), "utf-8")
+      fs.readFileSync(path.join(process.cwd(), "twtxtr.json"), "utf-8")
     );
   } catch (error) {
     return {};
   }
 };
-export const loadConfig = () => {
-  const globalConfig = loadGlobalConfig();
+export const loadConfig = (configFilePath: string) => {
+  const globalConfig = loadGlobalConfig(configFilePath);
   const localConfig = loadLocalConfig();
 
   if (
