@@ -1,6 +1,6 @@
 {
   "name": "twtxtr",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A minimal twtxt cli",
   "module": "src/index.ts",
   "type": "module",
@@ -20,7 +20,7 @@
   },
   "license": "MIT",
   "bin": {
-    "twtxtr": "bin/twtxtr"
+    "twtxtr": "out/index.js"
   },
   "scripts": {
     "build": "bun run scripts/build.js"
