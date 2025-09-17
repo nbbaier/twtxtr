@@ -1,34 +1,34 @@
 {
-  "name": "twtxtr",
-  "version": "0.1.6",
-  "description": "A minimal twtxt cli",
-  "module": "src/index.ts",
-  "type": "module",
-  "devDependencies": {
-    "@types/bun": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/nbbaier/twtxtr"
-  },
-  "author": {
-    "name": "Nico Baier",
-    "url": "https://nicobaier.com"
-  },
-  "license": "MIT",
-  "bin": {
-    "twtxtr": "src/cli.ts"
-  },
-  "files": [
-    "src/"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
-  "dependencies": {
-    "dayjs": "^1.11.11"
-  }
+	"name": "twtxtr",
+	"version": "0.1.6",
+	"description": "A minimal twtxt cli",
+	"module": "src/index.ts",
+	"type": "module",
+	"devDependencies": {
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5.0.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/nbbaier/twtxtr"
+	},
+	"author": {
+		"name": "Nico Baier",
+		"url": "https://nicobaier.com"
+	},
+	"license": "MIT",
+	"bin": {
+		"twtxtr": "src/cli.ts"
+	},
+	"files": [
+		"src/"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"dependencies": {
+		"dayjs": "^1.11.11"
+	}
 }
