@@ -1,59 +1,42 @@
 # Project Scout: twtxtr
 
+**Last Updated:** November 20, 2025
+
 ## Overview
 `twtxtr` is a minimal CLI client for [twtxt](https://twtxt.readthedocs.io/en/stable/), a decentralized microblogging platform based on text files. This tool allows you to post status updates to a local `twtxt.txt` file and read your timeline directly from the terminal.
 
 ## Architecture
-The project is built using **Bun** and **TypeScript**.
-- **Runtime:** Bun
-- **Entry Point:** `src/cli.ts`
+The project is built using **Bun** and **TypeScript** with a clean, modular structure:
+
+- **Entry Point:** `src/cli.ts` - CLI argument parsing and command routing
 - **Core Logic:**
-    - `src/index.ts`: Handles posting messages, file appending, and Git automation.
-    - `src/read.ts`: Parses and displays the timeline.
-    - `src/utils.ts`: Manages configuration loading and path resolution.
+  - `src/index.ts` - Message posting with Git automation (add/commit/push)
+  - `src/read.ts` - Timeline parsing and display (newest first)
+  - `src/utils.ts` - Configuration management and path resolution
 
 ## Key Features
-1.  **Post Updates:**
-    - Appends new messages with an ISO 8601 timestamp.
-    - Enforces a 280-character limit.
-    - **Git Integration:** Automatically commits and pushes changes to the remote repository hosting your `twtxt.txt` file.
-2.  **Read Timeline:**
-    - Reads the local `twtxt.txt`.
-    - Displays posts sorted by newest first.
+1. **Post Updates:** Appends messages with ISO 8601 timestamps, 280-char limit, auto Git workflow
+2. **Read Timeline:** Parses and displays posts sorted by newest first
+3. **Configuration:** Supports both global (`~/.config/twtxtr/config.json`) and local (`twtxtr.json`) configs
 
-## Configuration
-The tool looks for a configuration file in two locations (in order of precedence):
-1.  `~/.config/twtxtr/config.json`
-2.  `./twtxtr.json` (current working directory)
+## Development Commands
+- **Run:** `bun src/cli.ts <message>` or `bun src/cli.ts read`
+- **Typecheck:** `tsc` (strict mode enabled)
+- **Install:** `bun install`
+- **Test:** `bun test` (no tests currently implemented)
 
-**Format:**
-```json
-{
-  "twtxt": {
-    "twtfile": "~/path/to/twtxt.txt"
-  }
-}
-```
+## First Tasks When Resuming
+1. **Add tests** - Currently no test coverage; implement basic unit tests for config loading and message parsing
+2. **Error handling** - Improve Git error messages and add retry logic for network failures
+3. **Timeline features** - Add filtering by date, search functionality, or following other twtxt feeds
+4. **Configuration** - Add validation for config file format and better error messages
+5. **Documentation** - Expand README with examples and troubleshooting
 
-## Development Setup
-1.  **Prerequisites:** Ensure [Bun](https://bun.sh) is installed.
-2.  **Install Dependencies:**
-    ```bash
-    bun install
-    ```
-3.  **Run Locally:**
-    ```bash
-    # Post a message
-    bun src/cli.ts "Hello World"
+## Code Style Notes
+- Use explicit `node:` prefix for built-ins
+- Double quotes, semicolons, trailing commas
+- Handle `unknown` in catch blocks
+- Use `ora` for CLI spinners when adding long-running operations
 
-    # Read timeline
-    bun src/cli.ts read
-    ```
-4.  **Typecheck:**
-    ```bash
-    tsc
-    ```
-
-## Important Notes
-- **Git Automation:** When you post a message, the tool attempts to run `git add`, `git commit`, and `git push` in the directory containing your `twtxt.txt` file. Ensure this file is inside a valid Git repository with a configured remote.
-- **Date Handling:** Uses `dayjs` for timestamp formatting.
+## Current State
+The codebase is functional but minimal. Core posting and reading works reliably. Git integration is basic but effective. Ready for feature expansion and robustness improvements.
